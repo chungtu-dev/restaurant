@@ -1,0 +1,41 @@
+.img-page-not-found {
+    width: 100%;
+    height: 250px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.wrapper h1 {
+    font-size: 3rem;
+
+}
+
+.wrapper .message {
+    font-size: 1.5rem;
+    padding: 10px;
+    text-align: center;
+    width: 60%;
+}
+
+.go-back{
+    padding-bottom: 20px;
+}
+
+.go-back a {
+    padding: 10px;
+    border: 1px solid;
+    margin: 10px;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(36, 0, 31, 0.795999649859944) 0%, rgba(23, 23, 143, 1) 49%, rgba(13, 52, 115, 1) 87%);
+    font-weight: bold;
+}
+.go-back a:hover{
+    color: #fff;
+    border: none;
+}
