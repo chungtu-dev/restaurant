@@ -117,6 +117,12 @@ const Form = () => {
         });
     }, [])
 
+    // const handleLog = () => {
+    //     fetch("https://sheetdb.io/api/v1/mxocir8iv4z0b")
+    //     .then((response) => response.json())
+    //     .then((data) => console.log(data))
+    // }
+
     return (
         <Container>
             <Row>
@@ -183,6 +189,7 @@ const Form = () => {
 
                             <input id='btn' className='btn-submit' name="Name" type="submit" value={loading ? "Vui lòng đợi..." : "Gửi"} />
                         </form>
+                        {/* <button onClick={()=>handleLog()}>CALl API FROM SHEET</button> */}
                     </Container>
                 </Col>
             </Row>

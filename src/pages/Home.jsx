@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Col } from 'reactstrap'
+import { Container } from 'reactstrap'
 import Helmet from '../components/Helmet/Helmet'
 import '../styles/hero-section.css'
 import '../styles/home.css'
@@ -14,6 +14,7 @@ import Menu from '../components/UI/menu/Menu'
 import Form from '../components/Form/Form'
 import CollapseMenu from '../components/CollapseMenu/CollapseMenu'
 import { menu, name_list_menu, thuc_uong, loai_thuc_uong } from '../assets/fake-data/menu'
+import form_bg from '../assets/images/form-bg.jpg'
 
 import { useTranslation } from 'react-i18next';
 
@@ -124,7 +125,7 @@ const Home = () => {
         <div className='form'>
           <Form />
         </div>
-        <img src="https://cdn.pixabay.com/photo/2016/11/18/14/05/brick-wall-1834784_1280.jpg" alt="" />
+        <img src={form_bg} alt="form-booking-bg" />
       </section>
 
     </Helmet>
