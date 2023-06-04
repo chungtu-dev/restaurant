@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'reactstrap'
 import "../../styles/form.css";
 import axios from 'axios'
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
     // form states
@@ -13,6 +14,8 @@ const Form = () => {
     const [startDate, setStartDate] = useState("");
     const today = new Date().toISOString().slice(0, 16);
     const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate();
 
     //handleChange
     const handleChange = (e) => {
@@ -49,6 +52,7 @@ const Form = () => {
                         confirmButtonText: 'Đóng'
                     }).then((result) => {
                         if (result.isConfirmed) {
+                            navigate("/")
                             window.location.reload();
                         }
                     })
