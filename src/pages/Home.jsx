@@ -5,7 +5,6 @@ import '../styles/hero-section.css'
 import '../styles/home.css'
 
 import menuToSearch from '../assets/fake-data/menuToSearch'
-
 import info from '../assets/fake-data/info.js'
 
 import CarouselSlider from '../components/Carousel/CarouselSlider'
@@ -64,8 +63,6 @@ const Home = () => {
 
       <section id='mon-ban-chay'></section>
       <div className="pt-0" >
-        {/* <Col lg='12' className='text-center'>
-        </Col> */}
         <Menu />
       </div>
 
