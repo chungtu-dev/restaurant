@@ -45,6 +45,7 @@ const Form = () => {
             console.log('success');
             const formEle = document.querySelector("form");
             const formDatab = new FormData(formEle);
+            console.log(data);
             fetch(
                 "https://script.google.com/macros/s/AKfycbxTsKKx16htSIDFh4VpIGhwjOfbQCrT0rZwwgg-zHKeltKgF6blYm_QDPWfRyfQRRV5yA/exec",
                 {
@@ -71,9 +72,7 @@ const Form = () => {
                         e.target.reset();
                         setLoading(false)
                         setFormValues("");
-                        // console.log(data);
                     }, 2000)
-                    // window.location.reload();
                 }).catch((err) => {
                     Swal.fire({
                         icon: 'error',
@@ -139,7 +138,7 @@ const Form = () => {
 
     return (
         <Container>
-            <Row className={loading ? "loading-opacity" : ""}>
+            <Row>
                 <Col lg='12' md='12' sm='12'>
                     <Container className='container-form-inp'>
                         {
@@ -147,68 +146,70 @@ const Form = () => {
                                 <Loading />
                             </div> : ""
                         }
-                        <div className='form-header'>
-                            <h5>Đặt bàn</h5>
-                            <hr className='hr' />
+                        <div className={loading ? 'loading-form' : ""}>
+                            <div className='form-header'>
+                                <h5>Đặt bàn</h5>
+                                <hr className='hr' />
+                            </div>
+                            <form autoComplete="off" className="form-inp" onSubmit={handleSubmit}>
+                                <div className="form-inp-item">
+                                    <label htmlFor="name" className="form-inp-label">Họ và tên</label>
+                                    <input className='inp' placeholder="Nhập tên" type="text" id="name"
+                                        name="name"
+                                        value={formValues.name}
+                                        onChange={handleChange} />
+                                    {
+                                        formErrors.name && (<p className='error-valid-form'>*{formErrors.name}</p>)
+                                    }
+                                </div>
+                                <div className="form-inp-item">
+                                    <label htmlFor="phone" className="form-inp-label">Số điện thoại</label>
+                                    <input className='inp' placeholder="Nhập số điện thoại" type="text" id="phone"
+                                        name="phone"
+                                        maxLength="10"
+                                        value={formValues.phone}
+                                        onChange={handleChange}
+                                    // pattern="(0+)\d+"
+                                    // title="Vui lòng nhập số điện thoại"
+                                    />
+                                    {
+                                        formErrors.phone && (<p className='error-valid-form'>*{formErrors.phone}</p>)
+                                    }
+                                </div>
+                                <div className="form-inp-item">
+                                    <label htmlFor="customers" className="form-inp-label">Số lượng khách</label>
+                                    <input className='inp' placeholder="Nhập số lượng" type="number" id='customers'
+                                        name="numberof"
+                                        value={formValues.numberof}
+                                        onChange={handleChange}
+                                    // pattern="(0+)\d+"
+                                    // title="Vui lòng nhập số lượng"
+                                    />
+                                    {
+                                        formErrors.numberof && (<p className='error-valid-form'>*{formErrors.numberof}</p>)
+                                    }
+                                </div>
+                                <div className="form-inp-item">
+                                    <label className="form-inp-label" htmlFor="date">Ngày</label>
+                                    <input defaultValue={formValues.dateTime} onChange={handleChange} type="datetime-local" className='inp' name="dateTime" id="date" min={today} />
+                                    {
+                                        formErrors.dateTime && (<p className='error-valid-form'>*{formErrors.dateTime}</p>)
+                                    }
+                                </div>
+
+                                <div className="form-inp-item">
+                                    <label className="form-inp-label" htmlFor="note">Yêu cầu khác (Không bắt buộc)</label>
+                                    <textarea className='inp' id="note" cols="10" rows="10" placeholder="Nhập yêu cầu"
+                                        name="note"
+                                        value={formValues.note}
+                                        onChange={handleChange}
+                                    ></textarea>
+                                </div>
+
+                                <input id='btn' className='btn-submit' name="Name" type="submit" value={loading ? "Vui lòng đợi..." : "Gửi"} />
+                            </form>
+                            {/* <button onClick={()=>handleLog()}>CALl API FROM SHEET</button> */}
                         </div>
-                        <form autoComplete="off" className="form-inp" onSubmit={handleSubmit}>
-                            <div className="form-inp-item">
-                                <label htmlFor="name" className="form-inp-label">Họ và tên</label>
-                                <input className='inp' placeholder="Nhập tên" type="text" id="name"
-                                    name="name"
-                                    value={formValues.name}
-                                    onChange={handleChange} />
-                                {
-                                    formErrors.name && (<p className='error-valid-form'>*{formErrors.name}</p>)
-                                }
-                            </div>
-                            <div className="form-inp-item">
-                                <label htmlFor="phone" className="form-inp-label">Số điện thoại</label>
-                                <input className='inp' placeholder="Nhập số điện thoại" type="text" id="phone"
-                                    name="phone"
-                                    maxLength="10"
-                                    value={formValues.phone}
-                                    onChange={handleChange}
-                                // pattern="(0+)\d+"
-                                // title="Vui lòng nhập số điện thoại"
-                                />
-                                {
-                                    formErrors.phone && (<p className='error-valid-form'>*{formErrors.phone}</p>)
-                                }
-                            </div>
-                            <div className="form-inp-item">
-                                <label htmlFor="customers" className="form-inp-label">Số lượng khách</label>
-                                <input className='inp' placeholder="Nhập số lượng" type="number" id='customers'
-                                    name="numberof"
-                                    value={formValues.numberof}
-                                    onChange={handleChange}
-                                // pattern="(0+)\d+"
-                                // title="Vui lòng nhập số lượng"
-                                />
-                                {
-                                    formErrors.numberof && (<p className='error-valid-form'>*{formErrors.numberof}</p>)
-                                }
-                            </div>
-                            <div className="form-inp-item">
-                                <label className="form-inp-label" htmlFor="date">Ngày</label>
-                                <input defaultValue={formValues.dateTime} onChange={handleChange} type="datetime-local" className='inp' name="dateTime" id="date" min={today} />
-                                {
-                                    formErrors.dateTime && (<p className='error-valid-form'>*{formErrors.dateTime}</p>)
-                                }
-                            </div>
-
-                            <div className="form-inp-item">
-                                <label className="form-inp-label" htmlFor="note">Yêu cầu khác (Không bắt buộc)</label>
-                                <textarea className='inp' id="note" cols="10" rows="10" placeholder="Nhập yêu cầu"
-                                    name="note"
-                                    value={formValues.note}
-                                    onChange={handleChange}
-                                ></textarea>
-                            </div>
-
-                            <input id='btn' className='btn-submit' name="Name" type="submit" value={loading ? "Vui lòng đợi..." : "Gửi"} />
-                        </form>
-                        {/* <button onClick={()=>handleLog()}>CALl API FROM SHEET</button> */}
                     </Container>
                 </Col>
             </Row>

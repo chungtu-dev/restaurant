@@ -59,7 +59,9 @@ const Footer = () => {
           <Col lg="3" md="3" sm="6">
             <div className="map-container">
               <h5>Fanpage Facebook</h5>
-              <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100088807146937&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="map-place"></iframe>
+              <div>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100088807146937&tabs=timeline&width=350&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="map-place"></iframe>
+              </div>
             </div>
             {/* https://developers.facebook.com/docs/plugins/page-plugin/ */}
           </Col>

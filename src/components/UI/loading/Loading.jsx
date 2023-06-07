@@ -3,13 +3,13 @@ import '../../../styles/loading.css'
 
 const Loading = () => {
     return (
-        <div class="spinner-box">
-            <div class="configure-border-1">
-                <div class="configure-core"></div>
-            </div>
-            <div class="configure-border-2">
-                <div class="configure-core"></div>
-            </div>
+        <div class="loader">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+            <div class="bar6"></div>
         </div>
     )
 }
