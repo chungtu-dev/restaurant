@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 const Home = () => {
   const [hotPizza, setHotPizza] = useState([])
   const [infomation, setInfomation] = useState(info)
-
+  
   useEffect(() => {
     const filteredPizza = menuToSearch.filter((i) => i.cate === 'ghe')
     const slicePizza = filteredPizza.slice(0, 4)
@@ -28,7 +28,6 @@ const Home = () => {
   }, [])
 
   const { t } = useTranslation();
-
 
   return (
     <Helmet title="Home">

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import "../../styles/form.css";
-import axios from 'axios'
+// import axios from 'axios'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../UI/loading/Loading';
 
 const Form = () => {
     // form states
@@ -42,39 +43,48 @@ const Form = () => {
 
         if (formValues.name !== '' && (formValues.phone !== '' && validPhone.test(formValues.phone)) && formValues.numberof !== '' && formValues.dateTime !== '') {
             console.log('success');
-            axios.post('https://sheetdb.io/api/v1/mxocir8iv4z0b', data).then(response => {
-                setTimeout(() => {
-                    Swal.fire({
-                        title: 'Xin cảm ơn',
-                        text: "Đã gửi thành công, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất",
-                        icon: 'success',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'Đóng'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            navigate("/")
-                            window.location.reload();
-                        }
-                    })
+            const formEle = document.querySelector("form");
+            const formDatab = new FormData(formEle);
+            fetch(
+                "https://script.google.com/macros/s/AKfycbxTsKKx16htSIDFh4VpIGhwjOfbQCrT0rZwwgg-zHKeltKgF6blYm_QDPWfRyfQRRV5yA/exec",
+                {
+                    method: "POST",
+                    body: formDatab
+                }
+            )
+                .then((response) => response.json())
+                .then(response => {
+                    setTimeout(() => {
+                        Swal.fire({
+                            title: 'Xin cảm ơn',
+                            text: "Đã gửi thành công, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất",
+                            icon: 'success',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Đóng'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                navigate("/")
+                                window.location.reload();
+                            }
+                        })
 
-                    e.target.reset();
+                        e.target.reset();
+                        setLoading(false)
+                        setFormValues("");
+                        // console.log(data);
+                    }, 2000)
+                    // window.location.reload();
+                }).catch((err) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Rất tiếc',
+                        text: 'Đã có lỗi xảy ra, vui lòng kiểm tra lại thông tin hoặc thử lại sau',
+                    })
                     setLoading(false)
-                    setFormValues("");
-                    console.log(data);
-                }, 2000)
-                // window.location.reload();
-            }).catch((err) => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Rất tiếc',
-                    text: 'Đã có lỗi xảy ra, vui lòng kiểm tra lại thông tin hoặc thử lại sau',
+                    console.log(err);
                 })
-                setLoading(false)
-                console.log(err);
-            })
         }
         else {
-            console.log('check lai thong tin');
             setLoading(false)
             Swal.fire({
                 icon: 'warning',
@@ -129,9 +139,14 @@ const Form = () => {
 
     return (
         <Container>
-            <Row>
+            <Row className={loading ? "loading-opacity" : ""}>
                 <Col lg='12' md='12' sm='12'>
                     <Container className='container-form-inp'>
+                        {
+                            loading ? <div className='load'>
+                                <Loading />
+                            </div> : ""
+                        }
                         <div className='form-header'>
                             <h5>Đặt bàn</h5>
                             <hr className='hr' />

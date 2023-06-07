@@ -1,6 +1,13 @@
+.loading-opacity{
+    opacity: 0.5;
+}
 .form-header {
     display: flex;
     flex-direction: column;
+}
+
+.container-form-inp{
+    display: block;
 }
 
 .container-form-inp h5 {
@@ -14,6 +21,12 @@
     height: 6px;
     border: 2px solid #fff;
     border-radius: 50%;
+}
+
+.container-form-inp .load{
+    position: absolute;
+    display: flex;
+    width: 40%;
 }
 
 .form-inp {
