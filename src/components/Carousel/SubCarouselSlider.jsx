@@ -9,7 +9,7 @@ const SubCarouselSlider = () => {
             {
                 introSlide.view_lobby.map((i) => (
                     <div key={i.id}>
-                        <img alt={i.alt} src={i.src} className='sub_carousel_img' />
+                        <img alt={i.alt} src={i.src} className='sub_carousel_img' loading="lazy"/>
                     </div>
                 ))
             }

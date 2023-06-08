@@ -34,7 +34,7 @@ const CollapseMenu = ({ menu, name_list_menu, thuc_uong, loai_thuc_uong }) => {
                                     <Col lg='6' md='6' sm='6' xs='6' key={data.id} className='collapse-menu-content_item'>
                                         <div className="content-detail">
                                             <div>
-                                                <img src={data.img} alt="food-img" />
+                                                <img src={data.img} alt="food-img" loading="lazy"/>
                                             </div>
                                             <div className='name-price-food'>
                                                 <h5>{data.name}</h5>
@@ -47,7 +47,7 @@ const CollapseMenu = ({ menu, name_list_menu, thuc_uong, loai_thuc_uong }) => {
                                         <Col lg='6' md='6' sm='6' xs='6' key={data.id} className='collapse-menu-content_item'>
                                             <div className="content-detail">
                                                 <div className="content-detail_img">
-                                                    <img src={data.img} alt="food-img" />
+                                                    <img src={data.img} alt="food-img" loading="lazy"/>
                                                 </div>
                                                 <div className='name-price-food'>
                                                     <h5>{data.name}</h5>

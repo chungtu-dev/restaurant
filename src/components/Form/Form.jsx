@@ -47,7 +47,7 @@ const Form = () => {
             const formDatab = new FormData(formEle);
             console.log(data);
             fetch(
-                "https://script.google.com/macros/s/AKfycbxTsKKx16htSIDFh4VpIGhwjOfbQCrT0rZwwgg-zHKeltKgF6blYm_QDPWfRyfQRRV5yA/exec",
+                "https://script.google.com/macros/s/AKfycbw3bF9_sSKVDbppD9HVfOg7CtzUHoJpcSIEUPCAY9XfHqqr8OMCw6hbybhGjtbEwY8gnA/exec",
                 {
                     method: "POST",
                     body: formDatab
@@ -131,9 +131,22 @@ const Form = () => {
     }, [])
 
     // const handleLog = () => {
-    //     fetch("https://sheetdb.io/api/v1/mxocir8iv4z0b")
-    //     .then((response) => response.json())
-    //     .then((data) => console.log(data))
+    //     try {
+    //         fetch("https://script.google.com/macros/s/AKfycbw3bF9_sSKVDbppD9HVfOg7CtzUHoJpcSIEUPCAY9XfHqqr8OMCw6hbybhGjtbEwY8gnA/exec",
+    //             {
+    //                 method: 'GET',
+    //                 mode: 'no-cors',
+    //             })
+    //             .then((res) => {
+    //                 JSON.stringify(res)
+    //                 console.log(res);
+    //             })
+    //             .then((data) => {
+    //                 console.log(data);
+    //             })
+    //     } catch (error) {
+    //         console.log('error', error);
+    //     }
     // }
 
     return (
@@ -208,7 +221,7 @@ const Form = () => {
 
                                 <input id='btn' className='btn-submit' name="Name" type="submit" value={loading ? "Vui lòng đợi..." : "Gửi"} />
                             </form>
-                            {/* <button onClick={()=>handleLog()}>CALl API FROM SHEET</button> */}
+                            {/* <button onClick={() => handleLog()}>CALl API FROM SHEET</button> */}
                         </div>
                     </Container>
                 </Col>

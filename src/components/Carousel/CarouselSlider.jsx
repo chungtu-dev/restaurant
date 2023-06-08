@@ -9,7 +9,7 @@ const CarouselSlider = () => {
             {
                 introSlide.view_restaurant.map((i) => (
                     <div key={i.id}>
-                        <img alt={i.alt} src={i.src} className='carousel_img' />
+                        <img alt={i.alt} src={i.src} className='carousel_img' loading="lazy"/>
                         {/* <p className="legend">Món 1</p> */}
                     </div>
                 ))

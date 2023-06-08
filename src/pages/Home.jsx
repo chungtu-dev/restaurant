@@ -121,7 +121,7 @@ const Home = () => {
         <div className='form'>
           <Form />
         </div>
-        <img src={form_bg} alt="form-booking-bg" />
+        <img src={form_bg} alt="form-booking-bg" loading="lazy"/>
       </section>
 
     </Helmet>
