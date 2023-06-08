@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import "../../styles/form.css";
-// import axios from 'axios'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../UI/loading/Loading';
@@ -130,25 +129,6 @@ const Form = () => {
         });
     }, [])
 
-    // const handleLog = () => {
-    //     try {
-    //         fetch("https://script.google.com/macros/s/AKfycbw3bF9_sSKVDbppD9HVfOg7CtzUHoJpcSIEUPCAY9XfHqqr8OMCw6hbybhGjtbEwY8gnA/exec",
-    //             {
-    //                 method: 'GET',
-    //                 mode: 'no-cors',
-    //             })
-    //             .then((res) => {
-    //                 JSON.stringify(res)
-    //                 console.log(res);
-    //             })
-    //             .then((data) => {
-    //                 console.log(data);
-    //             })
-    //     } catch (error) {
-    //         console.log('error', error);
-    //     }
-    // }
-
     return (
         <Container>
             <Row>
@@ -221,7 +201,6 @@ const Form = () => {
 
                                 <input id='btn' className='btn-submit' name="Name" type="submit" value={loading ? "Vui lòng đợi..." : "Gửi"} />
                             </form>
-                            {/* <button onClick={() => handleLog()}>CALl API FROM SHEET</button> */}
                         </div>
                     </Container>
                 </Col>
