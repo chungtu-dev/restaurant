@@ -22,7 +22,7 @@ const SubCarouselSlider = () => {
             {
                 subImgSlider.map((i, index) => (
                     <div key={index}>
-                        <img alt="sanh-img" src={i.SANH_TIEC} className='sub_carousel_img' loading='lazy'/>
+                        <img alt="sanh-img" src={i.SANH_TIEC} className='sub_carousel_img'/>
                     </div>
                 ))
             }

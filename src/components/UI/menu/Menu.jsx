@@ -1,21 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import ReactPaginate from 'react-paginate'
-import menuToSearch from '../../../assets/fake-data/menuToSearch'
 import ProductCard from '../product-card/ProductCard'
 
 import '../../../styles/all-foods.css'
 import '../../../styles/pagination.css'
+import { getListFoodBestSeller } from '../../../api'
 
 const Menu = () => {
 
+    const [bestSeller, setBestSeller] = useState([])
     const [searchItem, setSearchItem] = useState('')
     const [pageNumber, setPageNumber] = useState(0)
 
+    const setListBestSeller = () => {
+        getListFoodBestSeller().then((result) => {
+            setBestSeller(result);
+        })
+    }
+
+    useEffect(()=>{
+        setListBestSeller()
+    },[])
+
     // filter search item
-    const searchedProduct = menuToSearch.filter((i) => {
+    const searchedProduct = bestSeller.filter((i) => {
         if (searchItem.valueOf === '') { return i }
-        if (i.name.toLowerCase().includes(searchItem.toLowerCase())) { return i }
+        if (i.NAME.toLowerCase().includes(searchItem.toLowerCase())) { return i }
         // else { console.log('Không tìm thấy sản phẩm') }
     })
 
@@ -45,8 +56,8 @@ const Menu = () => {
 
                     {
                         displayPage
-                            .map((i) => (
-                                <Col lg='3' md='3' sm='6' xs='6' key={i.id} className='mb-4'>
+                            .map((i, index) => (
+                                <Col lg='3' md='3' sm='6' xs='6' key={index} className='mb-4'>
                                     <ProductCard i={i} />
                                 </Col>
                             ))

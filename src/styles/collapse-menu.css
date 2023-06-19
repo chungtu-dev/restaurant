@@ -110,7 +110,8 @@ h6 {
 }
 
 .content-detail h5 {
-    font-weight: 600;
+    font-weight: 700;
+    color: brown;
 }
 
 .content-detail .name-price-food {

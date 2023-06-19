@@ -20,7 +20,7 @@ const CarouselSlider = () => {
             {
                 imgSlider.map((i, index) => (
                     <div key={index}>
-                        <img alt='landing-img' src={i.ANH_LANDING} className='carousel_img' loading="lazy" />
+                        <img alt='landing-img' src={i.ANH_LANDING} className='carousel_img'/>
                         {/* <p className="legend">Món 1</p> */}
                     </div>
                 ))
