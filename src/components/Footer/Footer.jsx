@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import logo from "../../assets/images/logo_yen.png";
-import data from '../../assets/fake-data/info'
-
+import { getListInfo } from "../../api";
 import "../../styles/footer.css";
-
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const [infomation, setInfomation] = useState([])
+
+  const listInfo = () => {
+    getListInfo().then((info) => {
+      const contentList = new Array(Object.assign({}, ...info.map(i => ({ [i.SUB_ID]: i.CONTENT }))))
+      setInfomation(contentList)
+    })
+  }
+
+  useEffect(() => {
+    listInfo()
+  }, [])
+
   return (
     <footer className="footer" id="lien-he">
       <Container >
@@ -33,7 +44,7 @@ const Footer = () => {
           </Col>
 
           {
-            data?.map((i, index) => (
+            infomation?.map((i, index) => (
               <Col lg="3" md="3" sm="6" key={index}>
                 <ListGroup className="deliver__time-list">
                   <ListGroupItem className=" delivery__time-item border-0 ps-0">

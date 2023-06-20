@@ -5,6 +5,17 @@ export async function getAPIFood() {
     return await axios.get(`${BASE_URL}/API-FOOD`)
 }
 
+export async function getAPIInfo() {
+    return await axios.get(`${BASE_URL}/API-INFO`)
+}
+
+export const getListInfo = async () => {
+    return await getAPIInfo().then((response) => {
+        const content = response.data
+        return content
+    })
+}
+
 export const getListFoodBestSeller = async () => {
     return await getAPIFood().then((response) => {
         const foodBestSeller = response.data.filter(i => i.BEST_SELLING === "TRUE")
